@@ -1,5 +1,6 @@
 from db import conex
 import mysql.connector
+import os
 import menu
 
 def list():
@@ -10,13 +11,25 @@ def list():
             password="",
             database="shopify_list"
         )
-        query = ("SELECT idshops, nameshop FROM shops")
-        dbo = mydb.cursor()    
+        query = ("SELECT idshops, nameshop FROM shops order by idshops DESC")
+        dbo = mydb.cursor(dictionary=True)    
         dbo.execute(query)
+        records = dbo.fetchall()
         
         print("+-+-+- SHOPS -+-+-+")
-        for(idshops, nameshop) in dbo:
-            print(idshops, "- ", nameshop)
+        for row in records:
+            print(row["idshops"], "- ", row["nameshop"])
+        
+        
+        numberSelected = int(input("Enter id shop or 0 to back menu: "))
+        print(numberSelected)
+        for row_new in records:
+            if(int(row_new["idshops"]) == numberSelected):
+                commandTo = "shopify login --store " + row["nameshop"]
+                print("Haz seleccionado: ", row_new["nameshop"])
+                os.system(commandTo);
+        else:
+            menu.menuRender(3)
         
         dbo.close()
         mydb.close()

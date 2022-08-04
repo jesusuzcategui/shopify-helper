@@ -1,2 +1,5 @@
 termcolor==1.1.0
 text2art==0.2.0
+python-cfonts==1.5.2
+prompt_toolkit
+rich

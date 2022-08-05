@@ -5,8 +5,10 @@ import prompt_toolkit
 from rich.table import Table
 from rich.console import Console
 from ..database.db import Db
+from ..git.helper import gitHelper
 
 DbHelper = Db()
+git = gitHelper()
 
 def login():
     termcolor.cprint('Login into store development', "yellow")
@@ -133,6 +135,8 @@ def executeAction(num: Number):
     elif num == 6:
         termcolor.cprint('Good by', "blue")
         quit()
+    elif num == 7:
+        git.show()
         
 
 def render():
@@ -142,7 +146,8 @@ def render():
         {"icon": "🗡️", "label": "Init Db"},
         {"icon": "📦", "label": "Records"},
         {"icon": "🚀", "label": "Theme serve"},
-        {"icon": "🚪", "label": "Salir"}
+        {"icon": "🚪", "label": "Salir"},
+        {"icon": "🚪", "label": "Git"}
     ]
 
     for (i, item) in enumerate(items, start=1):

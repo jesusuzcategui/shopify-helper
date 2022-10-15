@@ -1,6 +1,7 @@
 from tokenize import Number
 import os
 import termcolor
+from cfonts import render as cfont_render
 import prompt_toolkit
 from rich.table import Table
 from rich.console import Console
@@ -132,11 +133,14 @@ def executeAction(num: Number):
     elif num == 5:
         os.system("shopify theme serve");
 
-    elif num == 6:
+    elif num == 7:
         termcolor.cprint('Good by', "blue")
         quit()
-    elif num == 7:
+    elif num == 6:
         git.show()
+    elif num == 8:
+        os.system("cls")
+        render()
         
 
 def render():
@@ -146,14 +150,26 @@ def render():
         {"icon": "🗡️", "label": "Init Db"},
         {"icon": "📦", "label": "Records"},
         {"icon": "🚀", "label": "Theme serve"},
+        {"icon": "🛖", "label": "Git"},
         {"icon": "🚪", "label": "Salir"},
-        {"icon": "🚪", "label": "Git"}
+        {"icon": "🧹", "label": "Limpiar"}
     ]
 
     for (i, item) in enumerate(items, start=1):
         label = str(i) + ") " + item['icon'] + "  " + item['label']
         termcolor.cprint(label, "blue")
+    
+    output = cfont_render(
+        text='Shopify Helper', 
+        colors=['green', 'white'], 
+        align='left',
+        font='simple',
+        size=[250, 80],
+        line_height=0.2
+    )
 
+    print(output)
+    termcolor.cprint("Tool created by Jesus Uzcategui", "green")
 
     option = prompt_toolkit.prompt("Put a option: ")
     option = int(option)

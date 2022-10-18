@@ -155,10 +155,6 @@ def render():
         {"icon": "🧹", "label": "Limpiar"}
     ]
 
-    for (i, item) in enumerate(items, start=1):
-        label = str(i) + ") " + item['icon'] + "  " + item['label']
-        termcolor.cprint(label, "blue")
-    
     output = cfont_render(
         text='Shopify Helper', 
         colors=['green', 'white'], 
@@ -169,7 +165,13 @@ def render():
     )
 
     print(output)
-    termcolor.cprint("Tool created by Jesus Uzcategui", "green")
+    termcolor.cprint("Tool created by Jesus Uzcategui\n", "green")
+
+    for (i, item) in enumerate(items, start=1):
+        label = str(i) + ") " + item['icon'] + "  " + item['label']
+        termcolor.cprint(label, "blue")
+    
+    print("\n")
 
     option = prompt_toolkit.prompt("Put a option: ")
     option = int(option)

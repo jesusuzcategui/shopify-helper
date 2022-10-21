@@ -132,6 +132,9 @@ def executeAction(num: Number):
     
     elif num == 5:
         os.system("shopify theme serve");
+    
+    elif num == 9:
+        os.system("shopify logout");
 
     elif num == 7:
         termcolor.cprint('Good by', "blue")
@@ -152,7 +155,8 @@ def render():
         {"icon": "🚀", "label": "Theme serve"},
         {"icon": "🛖", "label": "Git"},
         {"icon": "🚪", "label": "Salir"},
-        {"icon": "🧹", "label": "Limpiar"}
+        {"icon": "🧹", "label": "Limpiar"},
+        {"icon": "🏃", "label": "Logout"}
     ]
 
     output = cfont_render(

@@ -18,7 +18,7 @@ Before beginning, verify the things on your computer following:
 1. First clone
 
 ```bash
-git clone https://jesusuzcategui@bitbucket.org/python-web-dev/shopifyhelper.git
+git clone https://github.com/jesusuzcategui/shopify-helper.git
 ```
 
 2. Now set into directory and install dependencies.
